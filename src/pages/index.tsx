@@ -1,6 +1,8 @@
 import Image from "next/image";
 import localFont from "next/font/local";
 import Agenda from '../components/Agenda'
+import Loading from '../components/Loading'
+import { useEffect } from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -14,9 +16,17 @@ const geistMono = localFont({
 });
 
 export default function Home() {
+useEffect(() => {
+  let carregador:any = document.getElementById('loader')
+  carregador.style.display = 'none'
+},[])
+  
   return (
-    <div className="w-full h-[100vh]">
+    <div className="w-full h-[100vh] absolute">
+    <Loading id='loader' />
+  
     <Agenda/>
+    
     </div>
   );
 }
